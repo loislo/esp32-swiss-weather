@@ -1,0 +1,19 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Factory firmware backup (16 MB binary)
+waveshare-factory-backup.bin
+
+# Local secrets (WiFi credentials, etc.) — if/when extracted from the sketch
+secrets.h
+
+# Local machine Claude settings
+.claude/settings.local.json
+
+# Rendered STL output (regenerate from the .scad)
+case/*.stl
+
+# macOS
+.DS_Store
