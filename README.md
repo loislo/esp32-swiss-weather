@@ -1,4 +1,4 @@
-# RuuviBeacon
+# ESP32 Swiss Weather
 
 A standalone desk thermometer: a **Waveshare ESP32-S3-Touch-LCD-2.8** reads a
 **RuuviTag** over Bluetooth and shows it on its own 2.8″ colour touchscreen —
@@ -134,7 +134,7 @@ its own pictogram.
 
 ## Case
 
-`case/ruuvibeacon_case.scad` is a parametric **two-part snap-fit enclosure**
+`case/swiss_weather_case.scad` is a parametric **two-part snap-fit enclosure**
 designed to be stuck to a mirror with double-sided tape: the back is a flat,
 unbroken face and there are no screws or screw heads anywhere.
 
@@ -151,8 +151,8 @@ from the front. The back shell is the structural part and carries the tape, so
 the load path from mirror to board never runs through a snap.
 
 ```bash
-openscad -D 'part="shell"' -o ruuvibeacon_shell.stl case/ruuvibeacon_case.scad
-openscad -D 'part="bezel"' -o ruuvibeacon_bezel.stl case/ruuvibeacon_case.scad
+openscad -D 'part="shell"' -o swiss_weather_shell.stl case/swiss_weather_case.scad
+openscad -D 'part="bezel"' -o swiss_weather_bezel.stl case/swiss_weather_case.scad
 ```
 
 `part="fit"` renders both halves around a stand-in board for checking

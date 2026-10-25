@@ -38,7 +38,7 @@ class ScanCallbacks : public NimBLEScanCallbacks {
 void setup() {
   Serial.begin(115200);
   delay(2000);
-  Serial.println("\n[RuuviBeacon] BLE scanner starting...");
+  Serial.println("\n[swiss-weather] BLE scanner starting...");
 
   NimBLEDevice::init("");
   NimBLEScan* scan = NimBLEDevice::getScan();
@@ -47,7 +47,7 @@ void setup() {
   scan->setInterval(100);
   scan->setWindow(99);
   scan->start(0);  // scan continuously
-  Serial.println("[RuuviBeacon] Scanning for RuuviTag (DF5)...");
+  Serial.println("[swiss-weather] Scanning for RuuviTag (DF5)...");
 }
 
 void loop() {

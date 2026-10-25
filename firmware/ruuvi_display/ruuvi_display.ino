@@ -1,4 +1,4 @@
-// RuuviBeacon — Waveshare ESP32-S3-Touch-LCD-2.8 (ST7789 240x320, CST328 touch, PCM5101 audio)
+// ESP32 Swiss Weather — Waveshare ESP32-S3-Touch-LCD-2.8 (ST7789 240x320, CST328 touch, PCM5101 audio)
 // Step 2: BLE-scan the RuuviTag (DF5) and show the temperature on the LCD.
 // Pins are from Waveshare's official demo (Display_ST7789.h). Crisp text via U8g2 fonts.
 
@@ -916,7 +916,7 @@ static void applyWifi() {
 }
 
 static void printHelp() {
-  Serial.println(F("\n=== RuuviBeacon config console ==="));
+  Serial.println(F("\n=== ESP32 Swiss Weather config console ==="));
   Serial.println(F("  help            this help"));
   Serial.println(F("  show            current values"));
   Serial.println(F("  <key>=<value>   set a parameter (saved to flash, used after reboot too)"));
@@ -1018,20 +1018,20 @@ static void pollSerial() {
 void setup() {
   Serial.begin(115200);
   delay(1500);
-  Serial.println("\n[RuuviBeacon] starting (display build)...");
+  Serial.println("\n[swiss-weather] starting (display build)...");
 
   ledcAttach(PIN_LCD_BL, 5000, 8);  // backlight PWM: 5 kHz, 8-bit (0-255)
   ledcWrite(PIN_LCD_BL, 255);       // full brightness
   touchInit();
   gfx->begin(80000000);
   gfx->setUTF8Print(true);
-  Serial.printf("[RuuviBeacon] free PSRAM %u, heap %u\n", ESP.getFreePsram(), ESP.getFreeHeap());
+  Serial.printf("[swiss-weather] free PSRAM %u, heap %u\n", ESP.getFreePsram(), ESP.getFreeHeap());
   drawScreen();                     // initial "scanning..." screen
 
   // I2S audio (PCM5101)
   i2s.setPins(I2S_BCLK, I2S_LRC, I2S_DOUT);
   if (!i2s.begin(I2S_MODE_STD, AUDIO_SR, I2S_DATA_BIT_WIDTH_16BIT, I2S_SLOT_MODE_STEREO)) {
-    Serial.println("[RuuviBeacon] I2S init failed");
+    Serial.println("[swiss-weather] I2S init failed");
   }
 
   // load saved config from NVS (WiFi creds, plz)
@@ -1065,11 +1065,11 @@ void setup() {
   }, ARDUINO_EVENT_WIFI_STA_GOT_IP);
   if (cfgWifi.length()) {
     WiFi.begin(cfgWifi.c_str(), cfgPass.c_str());
-    Serial.printf("[RuuviBeacon] WiFi connecting to '%s'...\n", cfgWifi.c_str());
+    Serial.printf("[swiss-weather] WiFi connecting to '%s'...\n", cfgWifi.c_str());
   } else {
-    Serial.println(F("[RuuviBeacon] No WiFi set. Type 'help', e.g.  wifi=YourSSID  then  wifi_pass=..."));
+    Serial.println(F("[swiss-weather] No WiFi set. Type 'help', e.g.  wifi=YourSSID  then  wifi_pass=..."));
   }
-  Serial.println(F("[RuuviBeacon] Type 'help' for config commands."));
+  Serial.println(F("[swiss-weather] Type 'help' for config commands."));
 
   NimBLEDevice::init("");
   NimBLEScan* scan = NimBLEDevice::getScan();
@@ -1087,7 +1087,7 @@ void setup() {
   scan->setMaxResults(0);
   gScanActive = true;
   scan->start(SCAN_BURST_MS, false, true);
-  Serial.println("[RuuviBeacon] scanning for RuuviTag...");
+  Serial.println("[swiss-weather] scanning for RuuviTag...");
 }
 
 void loop() {

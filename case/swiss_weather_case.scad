@@ -1,5 +1,5 @@
 // =============================================================================
-// RuuviBeacon case — Waveshare ESP32-S3-Touch-LCD-2.8
+// ESP32 Swiss Weather case — Waveshare ESP32-S3-Touch-LCD-2.8
 //
 // Two-part snap-fit enclosure intended to be stuck to a mirror with
 // double-sided tape: the back of the shell is a flat, uninterrupted face.
@@ -17,8 +17,8 @@
 // model, not estimated — see case/DIMENSIONS.md. Don't change them.
 //
 // Render:
-//   openscad -D 'part="shell"' -o ruuvibeacon_shell.stl case/ruuvibeacon_case.scad
-//   openscad -D 'part="bezel"' -o ruuvibeacon_bezel.stl case/ruuvibeacon_case.scad
+//   openscad -D 'part="shell"' -o swiss_weather_shell.stl case/swiss_weather_case.scad
+//   openscad -D 'part="bezel"' -o swiss_weather_bezel.stl case/swiss_weather_case.scad
 // part="both" (default) previews them side by side.
 // part="fit" renders shell+bezel+board together to eyeball clearances.
 //
